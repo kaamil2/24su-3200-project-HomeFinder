@@ -8,12 +8,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
 from modules.nav import SideBarLinks
+import requests
 
 # Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
+data = {} 
+try:
+  data = requests.get('http://api:4000/data').json()
+except:
+  st.write("**Important**: Could not connect to sample api, so using dummy data.")
+  data = {"a":{"b": "123", "c": "hello"}, "z": {"b": "456", "c": "goodbye"}}
+
+st.dataframe(data)
+
 # set the header of the page
-st.header('World Bank Data')
+st.header('Your Property Data')
 
 # You can access the session state to make a more customized/personalized app experience
 st.write(f"### Hi, {st.session_state['first_name']}.")

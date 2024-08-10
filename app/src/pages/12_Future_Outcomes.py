@@ -7,7 +7,7 @@ from modules.nav import SideBarLinks
 
 SideBarLinks()
 
-st.write("# Accessing a REST API from Within Streamlit")
+st.write("# Accessing")
 
 """
 Simply retrieving data from a REST api running in a separate Docker Container.
@@ -17,7 +17,7 @@ should not totally die.
 """
 data = {} 
 try:
-  data = requests.get('http://api:4000/data').json()
+  data = requests.get('http://api:4000/users').json()
 except:
   st.write("**Important**: Could not connect to sample api, so using dummy data.")
   data = {"a":{"b": "123", "c": "hello"}, "z": {"b": "456", "c": "goodbye"}}
