@@ -28,7 +28,7 @@ def create_app():
     app.config['MYSQL_DATABASE_USER'] = os.getenv('DB_USER')
     app.config['MYSQL_DATABASE_PASSWORD'] = os.getenv('MYSQL_ROOT_PASSWORD')
     app.config['MYSQL_DATABASE_HOST'] = os.getenv('DB_HOST')
-    app.config['MYSQL_DATABASE_PORT'] = int(os.getenv('DB_PORT'))
+    app.config['MYSQL_DATABASE_PORT'] =3306
     app.config['MYSQL_DATABASE_DB'] = os.getenv('DB_NAME')  # Change this to your DB name
 
     # Initialize the database object with the settings above. 
