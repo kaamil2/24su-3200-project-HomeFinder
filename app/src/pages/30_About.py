@@ -8,10 +8,14 @@ st.write("# About this App")
 
 st.markdown (
     """
-    This is a demo app for CS 3200 Course Project.  
+    This is a demo app for CS 3200 Course Project HomeFinder.  
 
-    The goal of this demo is to provide information on the tech stack 
-    being used as well as demo some of the features of the various platforms. 
+    This product provides buyers, sellers, and realtors with
+    market data and predictive analytics to determine the best
+    time to buy or sell a home. It features a user-friendly 
+    interface with a local area map and future home valuation 
+    predictions, offering a comprehensive solution for real 
+    estate needs. 
 
     Stay tuned for more information and features to come!
     """
