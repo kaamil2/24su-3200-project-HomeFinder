@@ -23,9 +23,12 @@ base_url = 'http://localhost:4000/u/users'
 # Display all users
 database_name = os.getenv('DB_NAME')  
 
-url = 'http://localhost:4000/l/listings'
+url = 'http://localhost:4000/r/realtors'
+realtor_id = st.text("Bob Smith, Here are Your Listings")
+
 try:
-    response = requests.get(url)
+    specific_url = f"{url}/1"
+    response = requests.get(specific_url)
     if response.status_code == 200:
         all_data = response.json()
         st.dataframe(all_data)  # Displaying all user data in a dataframe
@@ -38,6 +41,7 @@ except requests.exceptions.RequestException as e:
 
 
 listing_id = st.text_input("Enter Listings ID to fetch specific listings details", "")
+url = 'http://localhost:4000/l/listings'
 
 # Conditionally make API request based on user input for specific user details
 if listing_id:
@@ -46,7 +50,7 @@ if listing_id:
         response = requests.get(specific_url)
         if response.status_code == 200:
             user_data = response.json()
-            st.json(user_data)  # Displaying specific user data in JSON format for clarity
+            st.dataframe(user_data)  # Displaying specific user data in JSON format for clarity
         else:
             st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
             st.text("Response:" + response.text)
