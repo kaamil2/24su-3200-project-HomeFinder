@@ -277,6 +277,27 @@ def get_all_states():
     
     return jsonify(json_data)
 
+### Get all product categories
+@listings.route('/getPriceChanges', methods = ['GET'])
+def get_price_changes():
+    query = '''
+        SELECT Street, PrevPriceData AS 'Previous Price', CurrPriceData AS 'Current Price', PredictedFuturePriceData as 'Predicted Future Price', ((CurrPriceData-PrevPriceData)/PrevPriceData *100) AS 'Change In Price (in percent)'
+        FROM Listings
+    '''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+
+    json_data = []
+    # fetch all the column headers and then all the data from the cursor
+    column_headers = [x[0] for x in cursor.description]
+    theData = cursor.fetchall()
+    # zip headers and data together into dictionary and then append to json data dict.
+    for row in theData:
+        json_data.append(row)
+    
+    return jsonify(json_data)
+
 @listings.route('/listings/<int:listing_id>', methods=['PUT'])
 def update_listings(listing_id):
     listings_info = request.json
