@@ -29,7 +29,7 @@ if listing_id:
             df = pd.DataFrame(user_data)
             df
         else:
-            st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+            st.error(f"Failed to retrieve data for listings. Status code: {response.status_code}")
             st.text("Response:" + response.text)
     except requests.exceptions.RequestException as e:
         st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
@@ -46,7 +46,7 @@ try:
         df = pd.DataFrame(user_data)
         df
     else:
-        st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+        st.error(f"Failed to retrieve data for users. Status code: {response.status_code}")
         st.text("Response:" + response.text)
 except requests.exceptions.RequestException as e:
     st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
@@ -62,7 +62,7 @@ try:
         df = pd.DataFrame(user_data)
         df
     else:
-        st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+        st.error(f"Failed to retrieve data for user genders. Status code: {response.status_code}")
         st.text("Response:" + response.text)
 except requests.exceptions.RequestException as e:
     st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
@@ -79,7 +79,7 @@ try:
         df = pd.DataFrame(user_data)
         df
     else:
-        st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+        st.error(f"Failed to retrieve data for rented listings. Status code: {response.status_code}")
         st.text("Response:" + response.text)
 except requests.exceptions.RequestException as e:
     st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
