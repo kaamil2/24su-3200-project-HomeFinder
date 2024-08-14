@@ -51,3 +51,36 @@ try:
 except requests.exceptions.RequestException as e:
     st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
     st.text(str(e))
+
+url = 'http://localhost:4000/u/usersgenders'
+
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        user_data = response.json()
+        st.write("View Gender Data Among Users")
+        df = pd.DataFrame(user_data)
+        df
+    else:
+        st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+        st.text("Response:" + response.text)
+except requests.exceptions.RequestException as e:
+    st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
+    st.text(str(e))
+
+
+url = 'http://localhost:4000/l/listingsBeingRented'
+
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        user_data = response.json()
+        st.write("View Renting Data Among Users")
+        df = pd.DataFrame(user_data)
+        df
+    else:
+        st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+        st.text("Response:" + response.text)
+except requests.exceptions.RequestException as e:
+    st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
+    st.text(str(e))

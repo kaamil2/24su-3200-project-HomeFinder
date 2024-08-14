@@ -11,13 +11,12 @@ from modules.nav import SideBarLinks
 import os
 import requests
 
-
 # Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
 
 st.write("# View All Of Your Current Properties")
 
-# Base URL for user data
+# Base URL for user data 
 base_url = 'http://localhost:4000/u/users'
 
 # Display all users
@@ -39,6 +38,20 @@ except requests.exceptions.RequestException as e:
     st.error("An error occurred while trying to connect to the API to fetch all users:")
     st.text(str(e))
 
+url = 'http://localhost:4000/l/listings'
+st.text("Review All Listings")
+# Conditionally make API request based on user input for specific user details
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        user_data = response.json()
+        st.dataframe(user_data)  # Displaying specific user data in JSON format for clarity
+    else:
+        st.error(f"Failed to retrieve data for listing ID . Status code: {response.status_code}")
+        st.text("Response:" + response.text)
+except requests.exceptions.RequestException as e:
+    st.error(f"An error occurred while trying to connect to the API to fetch listing ID:")
+    st.text(str(e))
 
 listing_id = st.text_input("Enter Listings ID to fetch specific listings details", "")
 url = 'http://localhost:4000/l/listings'
@@ -57,3 +70,20 @@ if listing_id:
     except requests.exceptions.RequestException as e:
         st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
         st.text(str(e))
+
+url = 'http://localhost:4000/l/getPriceChanges'
+
+# Conditionally make API request based on user input for specific user details
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        user_data = pd.DataFrame(response.json())
+        user_data.set_index('Street', inplace=True)
+        st.line_chart(user_data[['Current Price', 'Predicted Future Price', 'Previous Price']])  # Displaying specific user data in JSON format for clarity
+    else:
+        st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+        st.text("Response:" + response.text)
+except requests.exceptions.RequestException as e:
+    st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
+    st.text(str(e))
+
