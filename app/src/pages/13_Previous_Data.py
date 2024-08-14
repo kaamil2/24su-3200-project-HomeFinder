@@ -61,6 +61,8 @@ except requests.exceptions.RequestException as e:
     st.error("An error occurred while trying to connect to the API to fetch all users:")
     st.text(str(e))
 
+
+st.write("Price Changes in Homes Over Time")
 url = 'http://localhost:4000/l/getPriceChanges'
 
 # Conditionally make API request based on user input for specific user details

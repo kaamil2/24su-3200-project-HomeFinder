@@ -34,7 +34,17 @@ if listing_state:
         st.text(str(e))
 
 url = 'http://localhost:4000/a/areasname'
-listing_area = st.text_input("Enter Listings area to fetch specific area details", "")
+# Create a list of options for the dropdown
+options = ['Appalachia', 'Bay Area', 'Deep South', 'Great Lakes', 'Great Plains', 'Greater Boston Area',
+           'Gulf Coast', 'Mid-Atlantic', 'Midwest', 'Northeast', 'Pacific Northwest', 'Rocky Mountains',
+           'South Central', 'Southwest', 'Sunbelt']
+
+# Create a selectbox widget
+selected_option = st.selectbox(
+    'Choose an option:',  # The label for the dropdown
+    options  # The list of options
+)
+listing_area = selected_option
 # Conditionally make API request based on user input for specific area
 if listing_area:
     specific_url = f"{url}/{listing_area}"
