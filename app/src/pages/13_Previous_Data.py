@@ -60,3 +60,21 @@ try:
 except requests.exceptions.RequestException as e:
     st.error("An error occurred while trying to connect to the API to fetch all users:")
     st.text(str(e))
+
+
+st.write("Price Changes in Homes Over Time")
+url = 'http://localhost:4000/l/getPriceChanges'
+
+# Conditionally make API request based on user input for specific user details
+try:
+    response = requests.get(url)
+    if response.status_code == 200:
+        user_data = pd.DataFrame(response.json())
+        user_data.set_index('Street', inplace=True)
+        st.line_chart(user_data[['Current Price', 'Predicted Future Price', 'Previous Price']])  # Displaying specific user data in JSON format for clarity
+    else:
+        st.error(f"Failed to retrieve data for listing ID {listing_id}. Status code: {response.status_code}")
+        st.text("Response:" + response.text)
+except requests.exceptions.RequestException as e:
+    st.error(f"An error occurred while trying to connect to the API to fetch listing ID {listing_id}:")
+    st.text(str(e))
