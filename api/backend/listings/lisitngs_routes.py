@@ -10,13 +10,13 @@ from backend.db_connection import db
 
 listings = Blueprint('Listings', __name__)
 
-# Get all the products from the database
+# Get all the listings from the database
 @listings.route('/listings', methods=['GET'])
 def get_listings():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
-    # use cursor to query the database for a list of products
+    # use cursor to query the database for a list of listings
     cursor.execute('SELECT id, BeingRented, City, ZipCode,Street,HouseNum,State,PrevPriceData,CurrPriceData,PredictedFuturePriceData,AreaId,RealtorId FROM Listings')
 
     # grab the column headers from the returned data
@@ -53,7 +53,7 @@ def get_listing_detail (id):
     return jsonify(json_data)
     
 
-# get the top 5 products from the database
+# get the top 5 listings from the database
 @listings.route('/mostExpensive')
 def get_most_pop_listings():
     cursor = db.get_db().cursor()
@@ -254,7 +254,7 @@ def add_new_listing():
 
 
 
-### Get all product categories
+### Get all listing states
 @listings.route('/listingStates', methods = ['GET'])
 def get_all_states():
     query = '''
@@ -277,7 +277,7 @@ def get_all_states():
     
     return jsonify(json_data)
 
-### Get all product categories
+### Get all listing price changes
 @listings.route('/getPriceChanges', methods = ['GET'])
 def get_price_changes():
     query = '''

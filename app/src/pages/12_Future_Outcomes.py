@@ -3,10 +3,14 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 from pmdarima import auto_arima
+from modules.nav import SideBarLinks
 
+
+SideBarLinks()
 
 def load_data():
     print("Loading data...")
+    #this data is from zillow that we reformatted for the best use for our projections
     data = pd.read_csv('../../app/src/Metro_mlp_uc_sfrcondo_sm_month-v1.csv')
     data['Date'] = pd.to_datetime(data['Date'])
     return data
