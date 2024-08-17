@@ -6,7 +6,8 @@ Created by: Brooke Blanton, Kaamil Thobani, Gabriela Prieto Colón, Evan Levy, S
 
 ## About
 
-This project allows you to act as a realtor, potential buyer, or system admin for a homes website. This site provides buyers, sellers, and realtors with market data and predictive analytics to determine the best time to buy or sell a home.
+This project allows you to act as a realtor, potential buyer, or system admin for a homes website. This site provides buyers, sellers, and realtors with market data and predictive analytics to determine the best time to buy or sell a home. Link to video of us presenting : https://northeastern-my.sharepoint.com/:f:/g/personal/thobani_k_northeastern_edu/ElQ2dDcyd-pLjfj77Ts1E-AB3NpHsJNEiYaUFDc2UQerGA?e=yYQXLG
+
 
 ## Current Project Components
 
